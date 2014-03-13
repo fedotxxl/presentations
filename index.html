@@ -65,26 +65,20 @@
 				</section>
 
 				<!-- Example of nested vertical slides -->
-					<section>
-						<h2>Groovy-1. Fix.</h2>
-						<pre><code data-trim>
-                                GroovySystem.keepJavaMetaClasses = true
-                        </code></pre>
-					</section>
-					<section>
-						<h2>Groovy-2</h2>
-						<p>Class lock on any <strike>meta</strike> method call (for Java classes)</p>
-                        <pre><code data-trim class="java">
+                <section>
+                    <h2>Groovy-1</h2>
+                    <p>Class lock on any <strike>meta</strike> method call (for Java classes)</p>
+                    <pre><code data-trim class="java">
 String a = getString()
 if (a) {
     a.hashCode()
 }
-                        </code></pre>
-					</section>
-					<section>
-						<h2>Groovy-2. Fix.</h2>
-                        <p><a href="http://jira.codehaus.org/browse/GROOVY-5249">GROOVY-5249</a> [12.01.12 - 07.03.14]</p>
-						<pre><code data-trim>
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Groovy-1. Fix.</h2>
+                    <p><a href="http://jira.codehaus.org/browse/GROOVY-5249">GROOVY-5249</a> [12.01.12 - 07.03.14]</p>
+                    <pre><code data-trim>
 git clone git@github.com:groovy/groovy-core.git
 cd ./groovy-core
 git checkout tags/GROOVY_2_0_8
@@ -93,17 +87,23 @@ git checkout tags/GROOVY_2_0_8
 ./gradlew clean dist
 cd ./target/libs
 [deploy jars to maven repository]
-                            </code></pre>
-                        <pre><code data-trim class="java">
+                        </code></pre>
+                    <pre><code data-trim class="java">
 dependencies {
     compile "org.codehaus.groovy:groovy-all:2.0.8.1.PATCHED" //unofficial
     //compile "org.codehaus.groovy:groovy-all:2.0.8.2.PATCHED" //official
 }
-                            </code></pre>
-					</section>
-					<section>
-						<h2>Grails-1. Fix.</h2>
-						<pre><code data-trim contenteditable class="java">
+                        </code></pre>
+                </section>
+                <section>
+                    <h2>Groovy-2. Fix.</h2>
+						<pre><code data-trim>
+                            GroovySystem.keepJavaMetaClasses = true
+                        </code></pre>
+                </section>
+                <section>
+                    <h2>Grails-1. Fix.</h2>
+                    <pre><code data-trim contenteditable class="java">
 // http://jira.grails.org/browse/GRAILS-9943
 // ./grails-app/conf/CodecsFixBootStrap.groovy
 class CodecsFixBootStrap {
@@ -127,8 +127,8 @@ class CodecsFixBootStrap {
         }
     }
 }
-                        </code></pre>
-					</section>
+                    </code></pre>
+                </section>
 
 				<section>
 					<h2>Just for fun</h2>
