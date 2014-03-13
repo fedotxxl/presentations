@@ -34,6 +34,16 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+        <style type="text/css">
+            code {
+                max-height: none !important;
+            }
+
+            pre {
+                width: 100% !important;
+            }
+        </style>
 	</head>
 
 	<body>
@@ -43,97 +53,135 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
+					<h1>Groovy under load</h1>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
+					<h2>Single server</h2>
 					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
+                        <li>400 heavy rps</li>
+                        <li>1.2k light + heavy rps</li>
 					</ul>
 				</section>
 
+				<!-- Example of nested vertical slides -->
+					<section>
+						<h2>Groovy-1. Fix.</h2>
+						<pre><code data-trim>
+                                GroovySystem.keepJavaMetaClasses = true
+                        </code></pre>
+					</section>
+					<section>
+						<h2>Groovy-2</h2>
+						<p>Class lock on any meta call (for Java classes)</p>
+                        <pre><code data-trim class="java">
+class A {
+    String getName() {
+        return "Groovy"
+    }
+}
+
+def name = new A().name
+def nameEncoded = name?.encodeAsHTML() //todo
+if (name) { //lock
+    def nameEncoded = name.encodeAsHTML() //lock
+}
+                        </code></pre>
+					</section>
+					<section>
+						<h2>Groovy-2. Fix.</h2>
+                        <p><a href="http://jira.codehaus.org/browse/GROOVY-5249">GROOVY-5249</a> [12.01.12 - 07.03.14]</p>
+						<pre><code data-trim>
+git clone git@github.com:groovy/groovy-core.git
+cd ./groovy-core
+git checkout tags/GROOVY_2_0_8
+[patch https://github.com/lhotari/groovy-core/compare/GROOVY_2_0_8...GROOVY-5249-backport.patch]
+[update version in ./gradle.properties]
+./gradlew clean dist
+cd ./target/libs
+[deploy jars to maven repository]
+                            </code></pre>
+                        <pre><code data-trim class="java">
+dependencies {
+    compile "org.codehaus.groovy:groovy-all:2.0.8.1.PATCHED" //unofficial
+    //compile "org.codehaus.groovy:groovy-all:2.0.8.2.PATCHED" //official
+}
+                            </code></pre>
+					</section>
+					<section>
+						<h2>Grails-1. Fix.</h2>
+						<pre><code data-trim contenteditable class="java">
+// http://jira.grails.org/browse/GRAILS-9943
+// ./grails-app/conf/CodecsFixBootStrap.groovy
+class CodecsFixBootStrap {
+
+    /** logger */
+    private static final Logger LOG = LoggerFactory.getLogger(CodecsFixBootStrap)
+
+    def init = { servletContext ->
+        LOG.info "Adding custom encodeAsHTML metamethods"
+
+        [String, GStringImpl, StringBuffer, StringBuilder, Object].each {
+            it.metaClass.encodeAsHTML << {->
+                HtmlUtils.htmlEscape(delegate.toString())
+            }
+            it.metaClass.encodeAsURL << {->
+                URLEncoder.encode(delegate.toString(), URLCodec.getEncoding())
+            }
+            it.metaClass.decodeURL << {->
+                URLDecoder.decode(delegate.toString(), URLCodec.getEncoding())
+            }
+        }
+    }
+}
+                        </code></pre>
+					</section>
+
 				<section>
-					<h2>Fantastic Ordered List</h2>
+					<h2>Demo</h2>
+				</section>
+
+				<section>
+                    <h2>Just a simple Grails filter</h2>
+					<pre><code data-trim class="java">
+class TestFilters {
+
+    def filters = {
+        all(controller:'*', action:'*') {
+            before = {
+                def a = new A()
+                def b = a.name
+
+                if (b) {
+                    printB(b)
+                }
+
+                return true
+            }
+        }
+    }
+
+    private printB(String b) {
+        System.out.println("This is b - ${b}")
+    }
+
+}
+                            </code></pre>
+				</section>
+
+				<section>
+					<img src="./img/stacktrace.png">
+				</section>
+
+				<section>
+					<h2>Что делать?</h2>
+				</section>
+
+				<section>
+					<h2>Welcome Java8</h2>
 					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
+						<li>Lambda</li>
+						<li>Streams</li>
 					</ol>
 				</section>
 
