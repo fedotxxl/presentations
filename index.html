@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>JS Promises</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -43,56 +43,97 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
+					<h1>JS Promises</h1>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
+					<h2>JS - async</h2>
+					<ul>
+            <li>Listeners</li>
+            <li>Callbacks</li>
+					</ul>
 				</section>
+
+        <section>
+          <h2>Utils</h2>
+<pre><code data-trim contenteditable>
+console.time = function() {
+  [].unshift.call(arguments, Date.now());
+  console.log(arguments)
+}
+</code></pre>
+        </section>
 
 				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+        <section>
+          <h2>Get 2 files -> do something</h2>
+          <pre><code data-trim contenteditable>
+function getJson(url, callback) {
+  setTimeout(function() {
+    console.time("Answer for " + url);
+    callback({
+      url: url + '.server'
+    });
+  }, 500);
+}
+          </code></pre>
+
+          <pre class="fragment"><code data-trim contenteditable>
+getJson("a.json", function(a) {
+  getJson(a.url, function(b) {
+    console.time(b);
+  })
+})
+          </code></pre>
+
+          <ol>
+            <li class="fragment">Callback hell</li>
+            <li class="fragment">Parallel implementation?</li>
+          </ol>
+        </section>
+        <section>
+          <h2>JS Promise</h2>
+<pre><code data-trim contenteditable>
+function getPromiseJson(url) {
+  return new Promise(function(resolve, reject) {
+    getJson(url, resolve)
+  });
+}
+</code></pre>
+
+<pre class="fragment"><code data-trim contenteditable>
+getPromiseJson("a.json")
+  .then(function(a) {
+    return getPromiseJson(a.url)
+  })
+  .then(function(b) {
+    console.time(b);
+  })
+  .catch(function(error) {
+    console.time("Error!", error);
+  })
+</code></pre>
+        </section>
+        <section>
+          <h2>Get A and B in parallel</h2>
+<pre><code data-trim contenteditable>
+var arrayOfPromises = [
+  getPromiseJson("a.json"),
+  getPromiseJson("b.json")
+];
+
+Promise.all(arrayOfPromises).then(function(arrayOfResults) {
+  console.time(arrayOfResults);
+});
+</code></pre>
+        </section>
+        <section>
+          <h2>Basement Level 3</h2>
+          <p>That's it, time to go back up.</p>
+          <a href="#/2" class="image">
+            <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
+          </a>
+        </section>
 
 				<section>
 					<h2>Slides</h2>
