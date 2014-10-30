@@ -1,209 +1,208 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+  <meta charset="utf-8">
 
-		<title>JS Promises</title>
+  <title>JS DI</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/custom.css">
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/default.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'css/print/pdf.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    }
+  </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+  <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>JS Promises</h1>
-				</section>
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section>
+        <h1>JS DI</h1>
+      </section>
 
-        <section>
-          <h2>Utils</h2>
-<pre><code data-trim contenteditable>
-console.time = function() {
-    [].unshift.call(arguments, Date.now());
-    console.log(arguments)
-}
-</code></pre>
-        </section>
+      <section>
+        <h2>Benefits</h2>
+        <ul class="fragment">
+          <li>Code structure</li>
+          <li>Removes boilerplate</li>
+          <li>Testing</li>
+          <li class="fragment">Optional JS loading (RequireJS)</li>
+        </ul>
+      </section>
 
-				<section>
-					<h2>JS - async</h2>
-					<ul>
-            <li>Listeners</li>
-            <li>Callbacks</li>
-					</ul>
-				</section>
-
-				<!-- Example of nested vertical slides -->
-        <section>
-          <h2>2 async calls</h2>
-          <pre class="fragment"><code data-trim contenteditable>
-function getJson(url, callback) {
-    setTimeout(function() {
-        console.time("Answer for " + url);
-        callback({
-            url: url + '.server'
-        });
-    }, 500);
-}
-          </code></pre>
-
-          <pre class="fragment"><code data-trim contenteditable>
-getJson("a.json", function(a) {
-    getJson(a.url, function(b) {
-        console.time(b);
-    })
-})
-          </code></pre>
-
-          <ol>
-            <li class="fragment">Callback hell</li>
-            <li class="fragment">Parallel implementation?</li>
-          </ol>
-        </section>
-        <section>
-          <h2>JS Promise</h2>
-<pre><code data-trim contenteditable>
-function getPromiseJson(url) {
-    return new Promise(function(resolve, reject) {
-        getJson(url, resolve);
-        //getJson(url, function(response) {
-        //    resolve(response);
-        //})
+      <section>
+        <h2>AngularJS</h2>
+        <pre class="fragment"><code class="javascript" data-trim>
+angular.module('common').
+    value("logDebug", true).
+    factory("log", function(logDebug) {
+        return {
+            debug: function() {
+                if (logDebug) {
+                    console.log(arguments);
+                }
+            }
+        }
     });
-}
-</code></pre>
+        </code></pre>
+      </section>
 
-<pre class="fragment"><code data-trim contenteditable>
-getPromiseJson("a.json")
-    .then(function(a) {
-        return getPromiseJson(a.url)
-    })
-    .then(function(b) {
-        console.time(b);
-    })
-    .catch(function(error) {
-        console.time("Error!", error);
-    })
-</code></pre>
-        </section>
-        <section>
-          <h2>Get A and B in parallel</h2>
-<pre class="fragment"><code data-trim contenteditable>
-var arrayOfPromises = [
-    getPromiseJson("a.json"),
-    getPromiseJson("b.json")
-];
+      <!-- Example of nested vertical slides -->
+      <section>
+        <h2>AngularJS pitfalls</h2>
+          <pre class="fragment"><code class="javascript" data-trim>
+//https://github.com/sindresorhus/gulp-ngmin
+//gulpfile.js
+var gulp = require('gulp');
+var ngmin = require('gulp-ngmin');
 
-Promise.all(arrayOfPromises).then(function(arrayOfResults) {
-    console.time(arrayOfResults);
+gulp.task('default', function () {
+    return gulp.src('src/app.js')
+        .pipe(ngmin())
+        .pipe(gulp.dest('dist'));
+});
+          </code></pre>
+      </section>
+      <section>
+        <h2>RequireJS</h2>
+<pre class="fragment"><code class="javascript" data-trim>
+//log.debug.js
+define("log.debug", [], function() {
+    return true;
 });
 </code></pre>
-        </section>
 
-        <section>
-            <h2>Deferred</h2>
-            <ul>
-                <li>Another way to create promise</li>
-                <li>Doesn't have native support</li>
-            </ul>
+<pre class="fragment"><code class="javascript" data-trim>
+//log.js
+define("log", ["log.debug"], function(logDebug) {
+    return {
+        debug: function() {
+            if (logDebug) {
+                console.log(arguments);
+            }
+        }
+    }
+});
+</code></pre>
 
-            <div class="fragment">
-                <pre><code data-trim contenteditable>
-function getPromiseJson(url) {
-    return new Promise(function(resolve, reject) {
-        getJson(url, resolve)
+<pre class="fragment"><code class="javascript" data-trim>
+//main.js
+(function configRequireJs() {
+    require.config({
+        baseUrl: "/js/amd",
+        waitSeconds: 90
     });
-}
-                </code></pre>
-                <pre><code data-trim contenteditable>
-//https://github.com/tildeio/rsvp.js
-function getPromiseJson(url) {
-    var deferred = RSVP.defer();
+}());
 
-    getJson(url, deferred.resolve);
+require(["log"], function(log) {
+    log.debug("Hello world!");
+});
+</code></pre>
+      </section>
+      <section>
+        <h2>RequireJS</h2>
+<pre class="fragment"><code class="javascript" data-trim>
+define("log", ["log.debug"], function() {
+    var log = {
+        info: function() {
+            console.log(arguments);
+        }
+    };
 
-    return deferred.promise;
-}
-                </code></pre>
-            </div>
-        </section>
+    window.log = log;
 
-        <section>
-          <h2>Links</h2>
-          <ol>
-            <li><a href="http://habrahabr.ru/post/209662/">http://habrahabr.ru/post/209662/</a></li>
-            <li>Implementation's docs</li>
-          </ol>
-        </section>
+    return log;
+});
 
-			</div>
+window.log.info("Hello Gramant!");
+</code></pre>
+<p class="fragment">Will not work! RequireJS has async nature!
+      </section>
 
-		</div>
+      <section>
+        <h2>Links</h2>
+        <ol>
+			<li><a href="http://requirejs.org/">RequireJS</a></li>
+			<li><a href="https://angularjs.org/">AngularJS</a></li>
+			<li><a href="https://github.com/sindresorhus/gulp-ngmin">Gulp ngmin</a></li>
+        </ol>
+      </section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+    </div>
 
-		<script>
+  </div>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.min.js"></script>
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+  <script>
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-		</script>
+      // Parallax scrolling
+      // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+      // parallaxBackgroundSize: '2100px 900px',
 
-	</body>
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+        { src: 'lib/js/classList.js', condition: function () {
+          return !document.body.classList;
+        } },
+        { src: 'plugin/markdown/marked.js', condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        } },
+        { src: 'plugin/markdown/markdown.js', condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+          hljs.initHighlightingOnLoad();
+        } },
+        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+          return !!document.body.classList;
+        } },
+        { src: 'plugin/notes/notes.js', async: true, condition: function () {
+          return !!document.body.classList;
+        } }
+      ]
+    });
+
+  </script>
+
+</body>
 </html>
