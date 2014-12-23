@@ -63,20 +63,20 @@
 					</ol>
 				</section>
 				<section>
+					<h2 class="is-green">Functional degradation</h2>
+
+					<p>Degrade minor features on heavy load</p>
+
+					<p class="fragment"><span class="is-green">wav:</span> show cached suggestions when LA > 20</p>
+				</section>
+				<section>
 					<h2 class="is-green">Caching. Problems</h2>
 					<ul>
 						<li>Data vs HTML</li>
 						<li>Invalidation</li>
 						<li>Cache warm up</li>
 					</ul>
-					<p class="fragment"><span class="is-green">wav:</span> data / replacing invalidation / gradual start</p>
-				</section>
-				<section>
-					<h2 class="is-green">Functional degradation</h2>
-
-					<p>Degrade minor features on heavy load</p>
-
-					<p class="fragment"><span class="is-green">wav:</span> show cached suggestions when LA > 20</p>
+					<p class="fragment"><span class="is-green">wav:</span> data / replacing invalidation / gradual startup</p>
 				</section>
 				<section>
 					<h2 class="is-red">Proxy requests to different servers</h2>
@@ -90,7 +90,7 @@
 				<section>
 					<h2 class="is-red">DB</h2>
 					<ul>
-						<li>Replication. Master write. Slave read.</li>
+						<li>Replication. Master write / Slave read.</li>
 						<li>Sharding. Virtual shards.</li>
 						<li>Denormalization</li>
 						<li>Use different DB for hot data</li>
