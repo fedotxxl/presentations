@@ -15,8 +15,18 @@
     <script src="/js/users.js"></script>
     <link rel="stylesheet" href="/css/index.css">
 </head>
-<body>
+<body ng-app="app">
 
+<div class="m-users" ng-controller="UsersController">
+    <ul>
+        <li ng-repeat="user in users">{{user.mail}}</li>
+    </ul>
+
+    <form class="m-users-add" ng-controller="UserAddController">
+        <input type="text" ng-model="user.mail"/>
+        <button ng-click="save(user)">Save</button>
+    </form>
+</div>
 
 </body>
 </html>
