@@ -1,0 +1,15 @@
+{
+  "name": "eropic",
+  "version": "0.0.1",
+  "description": "",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "browser-sync": "^2.6.4",
+    "gulp": "^3.8.11",
+    "gulp-html-extend": "~1.1.2",
+    "gulp-rimraf": "^0.1.1",
+    "gulp-watch": "^4.2.4",
+    "path": "~0.11.14",
+    "run-sequence": "~1.0.2"
+  }
+}
