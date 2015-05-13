@@ -32,10 +32,36 @@ angular.module("app").
         $scope.user = {};
 
         $scope.save = function (user) {
+            if (!user.mail) {
+                setError("Empty email address!")
+            } else {
                 _users.add($scope.user)
                     .then(function (user) {
                         $scope.users.push(user);
                         $scope.user = {};
+                    }).catch(function(response) {
+                        setError(response.data.error);
                     });
+            }
         };
+
+        $scope.hasError = function () {
+            return !!$scope.error;
+        };
+
+        $scope.$watch("user.mail", resetError);
+
+        function hasUser(mail) {
+            return !!_.find($scope.users, function (user) {
+                return user.mail == mail;
+            })
+        }
+
+        function setError(error) {
+            $scope.error = error;
+        }
+
+        function resetError() {
+            $scope.error = null;
+        }
     });

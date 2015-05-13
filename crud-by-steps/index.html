@@ -23,7 +23,8 @@
     </ul>
 
     <form class="m-users-add" ng-controller="UserAddController">
-        <input type="text" ng-model="user.mail"/>
+        <p class="m-users-add--error" ng-show="hasError()">{{error}}</p>
+        <input type="text" ng-model="user.mail" ng-class="{'is-error': hasError()}"/>
         <button ng-click="save(user)">Save</button>
     </form>
 </div>

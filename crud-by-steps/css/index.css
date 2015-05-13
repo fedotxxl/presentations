@@ -1,0 +1,7 @@
+.m-users-add input.is-error {
+    color: red;
+}
+
+.m-users-add .m-users-add--error {
+    color: red;
+}
