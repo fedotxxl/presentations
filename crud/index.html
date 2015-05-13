@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/libs/angular/angular.js"></script>
+    <script src="/js/libs/angular/angular-mocks.js"></script>
+    <script src="/js/libs/underscore.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/stub.js"></script>
+    <script src="/js/_router.js"></script>
+    <script src="/js/users.js"></script>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body ng-app="app">
+
+<div class="m-users" ng-controller="UsersController">
+    <ul>
+        <li ng-repeat="user in users">{{user.mail}}</li>
+    </ul>
+
+    <form class="m-users-add" ng-controller="UserAddController" ng-submit="save(user)">
+        <p class="m-users-add--error" ng-show="hasError()">{{error}}</p>
+        <input type="text" ng-model="user.mail" ng-class="{'is-error': hasError()}"/>
+        <button type="submit">Save!</button>
+    </form>
+</div>
+
+</body>
+</html>
