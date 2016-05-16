@@ -1,1 +1,0 @@
-my presentations based on https://github.com/hakimel/reveal.js/
