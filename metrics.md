@@ -81,3 +81,17 @@ Problems:
 
 Solve:
 architecture → easy way to add new metrics
+
+
+## How to make A/B testing
+Imagine you’ve set up an A/B test to choose the best page design for increasing your subscriber rate. It works. Your subscription rate goes through the roof—but the design somehow hurts your sales rate and results in lower revenue.
+This might make you insane. Do you keep your winning design? No. Always choose the page that will increase your bottom line, not just your conversions. Remember, companies run on revenue, not on conversion rates
+
+Before you can start conversion testing, you’ll first need to define what your goal is for each test, so you can accurately identify the winning page design.
+
+Why
+We want to make decisions based on numbers
+We want to make better decisions
+
+How
+How (technical)
