@@ -9,8 +9,8 @@ Simple jquery frontend
 * simple to implement
 
 #### cons:
-* hard to support (spagetti code)
-* slow frontend → each action require server to rerender page
+* hard to support (spaghetti code)
+* slow frontend → a lot of traffic on each user action
 * build system depends on server implementation
 
 ### Long way to choose technologies
@@ -20,10 +20,12 @@ Simple jquery frontend
 * punyu (admin) (started 2016) → angularjs
 
 ### Where are we?
-Frontend became more complicated because it server more (features).
+Frontend became more complicated because it serves more (features).
 **We solve this complexity with appropriate technologies.**
 
 ### Our current technologies
+We try to use same technologies on all new projects / move old projects to new technologies set (if it makes sense)
+
 * CSS → SCSS
 * GULP as build system (compiles SCSS / joins / minified css / js)
 * AngularJS as JS framework
@@ -39,16 +41,16 @@ Frontend became more complicated because it server more (features).
 
 #### cons:
 * search engines (right now google tries to solve this problem)
-* Developer should remember about performance (most popular elements may be implemented with ReactJS)
-
+* developer should remember about performance (most popular elements may be implemented with ReactJS)
 
 ### Why?
 #### SCSS / GULP / AngularJS → leading technologies
-in general it means that it is good
-* less bugs
-* more information / larger community
+* in general it means that it is good
 * faster development
-* easy to find developers
+* larger community
+** less bugs
+** more information
+** easy to find developers
 
 #### ng-admin
 * easy way to create common admin pages
@@ -56,7 +58,14 @@ in general it means that it is good
 * less code to write → less bugs → faster development
 
 ### Where we want to go
-Technologies evolves all the time to work faster and better...
+Technologies evolves all the time... Our goal:
+
+* Write maintainable code
+* Fast dev / deploy cycle
+* Use same techs on all projects
+* (sometimes) write less code
+
+=> be more productive and efficient
 
 #### This year:
 * ES6 (next version of JavaScript)
