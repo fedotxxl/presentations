@@ -1,0 +1,7 @@
+apply from: "https://mymavenrepo.com/repo/${myMavenRepoReadToken}/soyuz-gradle/1.0/base-1.0.gradle"
+
+
+dependencies {
+    compile cl.utils.soyuz.isTo
+    compileOnly "org.projectlombok:lombok:1.16.16"
+}
