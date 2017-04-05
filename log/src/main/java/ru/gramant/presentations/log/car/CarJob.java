@@ -20,13 +20,56 @@ public class CarJob {
         this.cars = to.list(new Car("lada"), new Car("bmw"));
     }
 
+
     @PostConstruct
     private void setUp() {
-        to.daemonForever("car-job", 5000, this::washCars).start();
+        //daemon to wash cars
     }
 
-    private void washCars() {
-        cars.forEach(carService::wash);
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    @PostConstruct
+//    private void setUp() {
+//        to.daemonForever("car-job", 5000, this::washCars).start();
+//    }
+//
+//    private void washCars() {
+//        cars.forEach(carService::wash);
+//    }
 
 }

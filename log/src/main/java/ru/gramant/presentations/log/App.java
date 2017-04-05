@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ImportResource;
 
 /**
  * Created on 05.04.17.
+ * -Dlogback.env=dev -Dspring.profiles.active="dev"
  */
 @SpringBootApplication
 @ImportResource("classpath:applicationContext.xml")
