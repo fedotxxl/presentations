@@ -1,4 +1,4 @@
-package io.belov.presentations.lombok;
+package ru.gramant.presentations.lombok;
 
 import java.util.Date;
 

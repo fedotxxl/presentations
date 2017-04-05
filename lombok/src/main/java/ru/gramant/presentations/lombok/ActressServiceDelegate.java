@@ -1,4 +1,4 @@
-package io.belov.presentations.lombok;
+package ru.gramant.presentations.lombok;
 
 /**
  * Created on 29.03.17.

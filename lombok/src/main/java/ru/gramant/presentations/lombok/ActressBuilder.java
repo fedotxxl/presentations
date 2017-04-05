@@ -1,5 +1,5 @@
 
-package io.belov.presentations.lombok;
+package ru.gramant.presentations.lombok;
 
 import io.belov.soyuz.utils.to;
 import lombok.*;
