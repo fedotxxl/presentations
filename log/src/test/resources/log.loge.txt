@@ -1,0 +1,25 @@
+17:55:37.187 [JST] [jm-main-0] [job=dvd.dmm] INFO  c.devadmin.crawl.core.CrawlerService - crawler.page.list: {url=http://www.dmm.co.jp/digital/videoa/-/list/=/article=label/sort=release_date/page=3/, site=DMM}
+17:55:37.666 [JST] [jm-main-0] [job=utils.tag-matcher] INFO  c.d.w.c.m.TagMatcherPeriodicalService - tagMatcher.periodical.start: {movies=0, dvds=0, parallelism=10}
+17:55:37.685 [JST] [jm-wrapper-0] [] INFO  c.d.planificador.core.JobManager - job.finished: {job=utils.tag-matcher}
+17:55:39.241 [JST] [movie-check-XVIDEOS-54311-8] [] INFO  c.d.c.c.l.HttpBuilderPageLoader - pageLoader.failure: {url=http://search.yahoo.com/search?p=VVs, reason=org.apache.http.conn.ConnectTimeoutException: Connect to 195.34.79.175:8080 timed out}
+17:55:39.241 [JST] [movie-check-XVIDEOS-54311-8] [] WARN  c.d.crawl.core.proxy.ProxyService - pageLoader.proxy.notWorking: {proxy=195.34.79.175:8080 http, responseCode=-1}
+17:55:45.261 [JST] [jm-main-0] [job=dvd.dmm] INFO  c.devadmin.crawl.core.CrawlerService - crawler.result: {url=http://www.dmm.co.jp/digital/videoa/-/list/=/article=label/sort=release_date/page=3/, loaded=0, consumed=0}
+17:55:45.263 [JST] [jm-main-0] [job=dvd.dmm] INFO  c.devadmin.crawl.core.CrawlerService - crawler.page.list: {url=http://www.dmm.co.jp/digital/videoa/-/list/=/article=label/sort=release_date/page=4/, site=DMM}
+17:55:45.788 [JST] [movie-check-XVIDEOS-54311-4] [] INFO  c.d.c.c.l.HttpBuilderPageLoader - pageLoader.failure: {url=http://search.yahoo.com/search?p=GQnhZAdxxKlHRDIur, reason=java.net.ConnectException: Connection refused}
+17:55:45.789 [JST] [movie-check-XVIDEOS-54311-4] [] WARN  c.d.crawl.core.proxy.ProxyService - pageLoader.proxy.notWorking: {proxy=185.44.79.82:8080 http, responseCode=-1}
+17:55:45.925 [JST] [movie-check-XVIDEOS-54311-4] [] INFO  c.d.c.c.l.HttpBuilderPageLoader - pageLoader.failure: {url=http://search.yahoo.com/search?p=bTpOnSupVefiTzYNRUVwJ, reason=java.net.ConnectException: Connection refused}
+17:55:45.925 [JST] [movie-check-XVIDEOS-54311-4] [] WARN  c.d.crawl.core.proxy.ProxyService - pageLoader.proxy.notWorking: {proxy=185.44.79.159:8080 http, responseCode=-1}
+17:55:47.534 [JST] [jm-main-0] [job=crawler.blogs] INFO  c.d.w.c.p.jobs.BlogsCrawlerJob - Found 2 movie urls from blog 110 (http://erodouga.pw/feed)
+17:55:47.538 [JST] [jm-main-0] [job=crawler.blogs] INFO  c.d.w.c.p.jobs.BlogsCrawlerJob - Blog: http://erodouga.pw/feed, pages: 2, added/found/future: tube8: 0/2/0
+17:55:48.675 [JST] [jm-wrapper-0] [] INFO  c.d.planificador.core.JobManager - job.start: {job=utils.tag-matcher}
+17:55:48.700 [JST] [jm-main-0] [job=utils.tag-matcher] INFO  c.d.w.c.p.jobs.TagMatcherJob - matcher.job.started
+17:55:56.141 [JST] [jm-main-0] [job=dvd.dmm] INFO  c.devadmin.crawl.core.CrawlerService - crawler.result: {url=http://www.dmm.co.jp/digital/videoa/-/list/=/article=label/sort=release_date/page=4/, loaded=0, consumed=0}
+17:55:56.143 [JST] [jm-main-0] [job=dvd.dmm] INFO  c.devadmin.crawl.core.CrawlerService - crawler.page.list: {url=http://www.dmm.co.jp/digital/videoa/-/list/=/article=label/sort=release_date/page=5/, site=DMM}
+17:55:56.611 [JST] [movie-page-downloader-REDTUBE-0] [job=crawler.redtube.japanese] INFO  o.a.h.impl.client.DefaultHttpClient - I/O exception (org.apache.http.NoHttpResponseException) caught when processing request to {s}->https://www.redtube.com:443: The target server failed to respond
+17:55:56.611 [JST] [movie-page-downloader-REDTUBE-0] [job=crawler.redtube.japanese] INFO  o.a.h.impl.client.DefaultHttpClient - Retrying request to {s}->https://www.redtube.com:443
+17:56:04.346 [JST] [jm-main-0] [job=dvd.dmm] INFO  c.devadmin.crawl.core.CrawlerService - crawler.result: {url=http://www.dmm.co.jp/digital/videoa/-/list/=/article=label/sort=release_date/page=5/, loaded=0, consumed=0}
+17:56:04.348 [JST] [jm-main-0] [job=dvd.dmm] INFO  c.devadmin.crawl.core.CrawlerService - crawler.page.list: {url=http://www.dmm.co.jp/digital/videoa/-/list/=/article=label/sort=release_date/page=6/, site=DMM}
+17:56:05.940 [JST] [movie-check-XVIDEOS-54311-4] [] INFO  c.d.c.c.l.HttpBuilderPageLoader - pageLoader.failure: {url=http://search.yahoo.com/search?p=IUQHKsVrhBX, reason=org.apache.http.conn.ConnectTimeoutException: Connect to 185.44.78.73:8080 timed out}
+17:56:05.941 [JST] [movie-check-XVIDEOS-54311-4] [] WARN  c.d.crawl.core.proxy.ProxyService - pageLoader.proxy.notWorking: {proxy=185.44.78.73:8080 http, responseCode=-1}
+17:56:07.119 [JST] [movie-check-XVIDEOS-54311-4] [] INFO  c.d.c.c.l.HttpBuilderPageLoader - pageLoader.failure: {url=http://search.yahoo.com/search?p=oqudKJtrcr, statusCode=502}
+17:56:07.120 [JST] [movie-check-XVIDEOS-54311-4] [] WARN  c.d.crawl.core.proxy.ProxyService - pageLoader.proxy.notWorking: {proxy=185.2.32.45:8080 http, responseCode=502}

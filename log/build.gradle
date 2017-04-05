@@ -1,0 +1,25 @@
+apply plugin: "java"
+apply from: "https://mymavenrepo.com/repo/${myMavenRepoReadToken}/soyuz-gradle/1.0/soyuz.read-1.0.gradle"
+apply plugin: 'org.springframework.boot'
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+
+    compile "io.belov:soyuz-log:1.10"
+    compile "io.belov.soyuz:soyuz-is-to:1.57"
+    compile "ch.qos.logback:logback-classic:1.1.10"
+    compile "org.projectlombok:lombok:1.16.6"
+    testCompile "junit:junit:4.12"
+}

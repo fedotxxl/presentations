@@ -1,0 +1,24 @@
+<included>
+
+    <appender name="main" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/tmp/presentation/presentation.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [p] [%thread] [%X] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>/tmp/presentation/presentation.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="main" />
+    </root>
+
+    <logger name="ru.gramant" level="TRACE" additivity="false">
+        <appender-ref ref="main" />
+    </logger>
+
+</included>

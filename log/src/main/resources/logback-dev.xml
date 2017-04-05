@@ -1,0 +1,19 @@
+<included>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned by default the type
+       ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [d] [%thread] [%X] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="console" />
+    </root>
+
+    <logger name="ru.gramant" level="info" additivity="false">
+        <appender-ref ref="console" />
+    </logger>
+
+</included>

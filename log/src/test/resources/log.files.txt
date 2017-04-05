@@ -1,0 +1,35 @@
+[root@adplanner ~]# ls -lh /var/log/adplanner/
+total 15M
+-rw-r--r--. 1 root root 585K Мар  4 23:59 ad.2017-03-04.0.log382389642850646.tmp
+-rw-r--r--. 1 root root 157K Мар  7 00:00 ad.2017-03-06.0.log.gz
+-rw-r--r--. 1 root root 297K Мар  8 00:00 ad.2017-03-07.0.log.gz
+-rw-r--r--. 1 root root 316K Мар  9 00:00 ad.2017-03-08.0.log.gz
+-rw-r--r--. 1 root root 1,3M Мар 10 00:00 ad.2017-03-09.0.log.gz
+-rw-r--r--. 1 root root 442K Мар 11 00:00 ad.2017-03-10.0.log.gz
+-rw-r--r--. 1 root root  97K Мар 12 00:00 ad.2017-03-11.0.log.gz
+-rw-r--r--. 1 root root  77K Мар 13 00:00 ad.2017-03-12.0.log.gz
+-rw-r--r--. 1 root root  77K Мар 14 00:00 ad.2017-03-13.0.log.gz
+-rw-r--r--. 1 root root  77K Мар 15 00:00 ad.2017-03-14.0.log.gz
+-rw-r--r--. 1 root root  77K Мар 16 00:00 ad.2017-03-15.0.log.gz
+-rw-r--r--. 1 root root  77K Мар 17 00:00 ad.2017-03-16.0.log.gz
+-rw-r--r--. 1 root root  77K Мар 18 00:00 ad.2017-03-17.0.log.gz
+-rw-r--r--. 1 root root  77K Мар 19 00:00 ad.2017-03-18.0.log.gz
+-rw-r--r--. 1 root root  76K Мар 20 00:00 ad.2017-03-19.0.log.gz
+-rw-r--r--. 1 root root  77K Мар 21 00:00 ad.2017-03-20.0.log.gz
+-rw-r--r--. 1 root root 381K Мар 22 00:00 ad.2017-03-21.0.log.gz
+-rw-r--r--. 1 root root 594K Мар 23 00:00 ad.2017-03-22.0.log.gz
+-rw-r--r--. 1 root root 556K Мар 24 00:00 ad.2017-03-23.0.log.gz
+-rw-r--r--. 1 root root 538K Мар 25 00:00 ad.2017-03-24.0.log.gz
+-rw-r--r--. 1 root root 557K Мар 26 00:00 ad.2017-03-25.0.log.gz
+-rw-r--r--. 1 root root 556K Мар 27 00:00 ad.2017-03-26.0.log.gz
+-rw-r--r--. 1 root root 573K Мар 28 00:00 ad.2017-03-27.0.log.gz
+-rw-r--r--. 1 root root 596K Мар 29 00:00 ad.2017-03-28.0.log.gz
+-rw-r--r--. 1 root root 617K Мар 30 00:00 ad.2017-03-29.0.log.gz
+-rw-r--r--. 1 root root 588K Мар 31 00:00 ad.2017-03-30.0.log.gz
+-rw-r--r--. 1 root root 587K Апр  1 00:00 ad.2017-03-31.0.log.gz
+-rw-r--r--. 1 root root 474K Апр  2 00:00 ad.2017-04-01.0.log.gz
+-rw-r--r--. 1 root root 498K Апр  3 00:00 ad.2017-04-02.0.log.gz
+-rw-r--r--. 1 root root 461K Апр  4 00:00 ad.2017-04-03.0.log.gz
+-rw-r--r--. 1 root root 475K Апр  5 00:00 ad.2017-04-04.0.log.gz
+-rw-r--r--. 1 root root 2,5M Апр  5 11:58 ad.log
+-rw-r--r--. 1 root root    0 Фев 22 16:15 stdout.log

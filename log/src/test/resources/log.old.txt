@@ -1,0 +1,35 @@
+2015-05-20 04:49:28.828 [INFO]  [c.d.w.a.ActressesCacheControlService]    : Start refreshing actresses related caches
+2015-05-20 04:49:50.349 [INFO]  [c.d.w.a.ActressesCacheControlService]    : Completed refreshing actresses related caches
+2015-05-20 04:53:17.643 [INFO]  [g.p.c.e.GrailsEhCacheManagerFactoryBean] : Shutting down EHCache CacheManager
+2015-05-20 04:53:19.011 [INFO]  [o.c.g.g.web.context.GrailsContextLoader] : Destroying Spring parent WebApplicationContext Root WebApplicationContext
+2015-05-20 04:53:50.300 [INFO]  [g.plugin.cache.CacheBeanPostProcessor]   : postProcessBeanDefinitionRegistry start
+2015-05-20 04:53:50.302 [INFO]  [g.plugin.cache.CacheBeanPostProcessor]   : postProcessBeanFactory
+2015-05-20 04:53:50.995 [WARN]  [grails.util.GrailsUtil]                  : [WARNING] Property [data] of domain class pl.burningice.plugins.image.ast.Image has type [[B] and doesn't support constraint [blank]. This constraint will not be checked during validation.
+2015-05-20 04:53:51.050 [WARN]  [grails.util.GrailsUtil]                  : [WARNING] Property [views] of domain class com.devadmin.wav.Movie has type [int] and doesn't support constraint [nullable]. This constraint will not be checked during validation.
+2015-05-20 04:53:51.050 [WARN]  [grails.util.GrailsUtil]                  : [WARNING] Property [favorites] of domain class com.devadmin.wav.Movie has type [int] and doesn't support constraint [nullable]. This constraint will not be checked during validation.
+2015-05-20 04:53:51.083 [WARN]  [o.c.g.g.v.DefaultConstraintEvaluator]    : Derived properties may not be constrained. Property [lastCrawledDate] of domain class com.devadmin.wav.Blog will not be checked during validation.
+2015-05-20 04:53:51.083 [WARN]  [o.c.g.g.v.DefaultConstraintEvaluator]    : Derived properties may not be constrained. Property [lastCrawledMovieDate] of domain class com.devadmin.wav.Blog will not be checked during validation.
+2015-05-20 04:53:51.516 [WARN]  [n.sf.ehcache.config.ConfigurationFactory]: No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/opt/vs-site/webapps/ROOT/WEB-INF/lib/ehcache-core-2.4.6.jar!/ehcache-failsafe.xml
+2015-05-20 04:53:53.076 [INFO]  [g.p.c.e.GrailsEhCacheManagerFactoryBean] : Initializing EHCache CacheManager
+2015-05-20 04:53:53.782 [INFO]  [o.c.g.g.s.DefaultGrailsTemplateGenerator]: Scaffolding template generator set to use resource loader org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@6e6ef7fc: startup date [Wed May 20 04:53:49 PDT 2015]; parent: Root WebApplicationContext
+2015-05-20 04:53:54.877 [INFO]  [c.d.wav.actress.ActressesShortDataCache] : Refreshing cached short actresses data
+2015-05-20 04:53:58.666 [WARN]  [g.a.s.com.devadmin.wav.AssetService]     : SVN Asset file not found, cached assets not available.
+2015-05-20 04:54:14.060 [INFO]  [o.g.plugin.resource.ResourceProcessor]   : Performing a full reload
+2015-05-20 04:54:14.168 [INFO]  [o.g.plugin.resource.ResourceProcessor]   : Loading resource declarations...
+2015-05-20 04:54:14.168 [INFO]  [o.g.plugin.resource.ResourceProcessor]   : Forgetting all known modules...
+2015-05-20 04:54:14.169 [INFO]  [o.g.plugin.resource.ResourceProcessor]   : Forgetting all known resources...
+2015-05-20 04:54:14.417 [WARN]  [o.g.p.r.module.ModuleDeclarationsFactory]: 'grails.resources.modules' in config does not define any modules
+2015-05-20 04:54:16.587 [WARN]  [org.grails.plugin.resource.ResourceMeta] : Skipping mappers for http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css because its an absolute URL.
+2015-05-20 04:54:16.710 [WARN]  [org.grails.plugin.resource.ResourceMeta] : Skipping mappers for http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js because its an absolute URL.
+2015-05-20 04:54:17.417 [WARN]  [org.grails.plugin.resource.ResourceMeta] : Skipping mappers for http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js because its an absolute URL.
+2015-05-20 04:54:17.795 [WARN]  [org.grails.plugin.resource.ResourceMeta] : Skipping mappers for http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css because its an absolute URL.
+2015-05-20 04:54:20.150 [ERROR] [org.grails.plugin.resource.ResourceMeta] : While processing /bundle-bundle_adminAngular_head.css, /css/jquery.select2.css, /css/admin/angular.css, /css/admin/angular-pickadate.css, /css/scss/admin/admin.css, a resource was required but not found: /css/select2x2.png
+2015-05-20 04:54:20.156 [WARN]  [o.g.p.resource.util.ResourceMetaStore]   : Cannot locate resource [/css/select2x2.png]
+2015-05-20 04:54:20.157 [WARN]  [o.g.plugin.resource.mapper.cssrewriter]  : Cannot resolve CSS resource, leaving link as is: resource:/css/select2x2.png
+2015-05-20 04:54:20.224 [INFO]  [o.g.plugin.resource.ResourceProcessor]   : Finished full reload
+2015-05-20 04:54:22.364 [INFO]  [CacheHeadersGrailsPlugin]                : Caching enabled in Config: true
+2015-05-20 04:54:22.483 [WARN]  [net.sf.ehcache.CacheManager]             : Creating a new instance of CacheManager using the diskStorePath "/opt/vs-site/temp" which is already used by an existing CacheManager.
+The source of the configuration was net.sf.ehcache.config.generator.ConfigurationSource$InputStreamConfigurationSource@3be2e58e.
+The diskStore path for this CacheManager will be set to /opt/vs-site/temp/ehcache_auto_created_1432122862483.
+To avoid this warning consider using the CacheManager factory methods to create a singleton CacheManager or specifying a separate ehcache configuration (ehcache.xml) for each CacheManager instance.
+2015-05-20 04:54:22.484 [WARN]  [net.sf.ehcache.Cache]                    : Cache: sites-to-solr-filter-query has a maxElementsInMemory of 0.  In Ehcache 2.0 this has been changed to mean a store with no capacity limit. Set it to 1 if you want no elements cached in memory
