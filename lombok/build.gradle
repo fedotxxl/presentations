@@ -2,6 +2,6 @@ apply from: "https://mymavenrepo.com/repo/${myMavenRepoReadToken}/soyuz-gradle/1
 
 
 dependencies {
-    compile cl.utils.soyuz.isTo
+    compile cl.utils.thedocs.isTo
     compileOnly "org.projectlombok:lombok:1.16.16"
 }

@@ -1,6 +1,6 @@
 package ru.gramant.presentations.lombok;
 
-import io.belov.soyuz.utils.to;
+import io.thedocs.soyuz.to;
 import lombok.*;
 
 import javax.annotation.Nullable;
@@ -29,8 +29,10 @@ public class Employee {
     }
 
     public static void main(String[] args) {
+        //constructor init
         Employee pupkin = new Employee(1, "Вася", "Пупкин", to.set("депаратамент IT", "разработчик"), new Date());
 
+        //builder init
         Employee.builder()
                 .id(1)
                 .firstName("Вася")
@@ -39,6 +41,7 @@ public class Employee {
                 .createdAt(new Date())
                 .build();
 
+        //builder change
         pupkin = pupkin
                 .toBuilder()
                 .tags(to.set("депаратамент IT", "старший разработчик"))
