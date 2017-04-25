@@ -58,15 +58,54 @@ public class Employee {
 4. @Builder не позволяет задать список обязательных параметров - например, теоретически можно создать Employee без id, что может противоречить бизнес логике. В этом случае лучше использовать стандартный конструктор.
 
 ## @Builder(toBuilder = true)
-В примере выше я использовал дополнительный параметр `toBuilder = true`. Смысл его прост - теперь я могу создавать builder из уже существующего объекта Employee.
-Это зачастую оказывается очень полезно. Допустим, нам требуется поменять теги у существующего Employee.
-Добавить setter, конечно, можно, но зачем нам setter, которы будет вызываться 1 раз во всем приложении? Лучше создать копию объекта и изменить у него поле tags:
+У аннотации @Builder есть опциональный параметр toBuilder, который по-умолчанию равен false. Если задать его равным, то мы сможем создавать builder из уже существующего объекта (т.е. builder будет заполнен данными из исходного объекта).
+Это, зачастую, оказывается очень полезно. Допустим, нам требуется поменять теги у существующего Employee.
+Добавить setter, конечно, можно, но зачем нам setter, который будет вызываться 1 раз во всем приложении? Лучше создать копию объекта и изменить у него поле tags:
 ```java
 pupkin = pupkin
         .toBuilder()
         .tags(to.set("депаратамент IT", "старший разработчик"))
         .build();
 ```
+На выходе мы получим новый объект Employee, у которого будет изменено поле tags. 
+Грамотно используя @Builder(toBuilder = true), мы можем уменьшить количество setter'ов, т.е. сделать бины чуть более immutable, т.е. сделать Java код чуточку надежнее. 
+
+## Подводные камни
+Давайте взглянем на пример:
+```java
+import lombok.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
+public class Employee {
+    private int id;
+    private String firstName;
+    private String lastName;
+    private Set<String> tags = new HashSet<>();
+    private Date createdAt;
+
+    public static void main(String[] args) {
+        Employee pupkin;
+
+        pupkin = Employee.builder().id(1).firstName("Вася").lastName("Пупкин").build();
+
+        //int tagsCount = pupkin.tags.size(); //java.lang.NullPointerException
+
+        pupkin = new Employee().toBuilder().id(1).firstName("Вася").lastName("Пупкин").build();
+
+        int tagsCount = pupkin.tags.size();
+    }
+}
+```
+
+Для меня было новостью, что @Builder не ициализирует поля по-умолчанию. Хотя мы явно указали `Set<String> tags = new HashSet<>()` в первом случае у нас возникнет `NullPointerException`, т.к. `pupkin.tags == null`.
+Я знаю два решения данной проблемы:
+1. Создавать кастомный @Builder, как сделано в первом примере
+2. Использовать @Builder(toBuilder = true) и инициализировать пустой объект, как с сделано в данном примере. 
 
 ## Заключение
-Хотите сделать код чище, читабельнее и уменьшить % ошибок? Начните использовать [Project Lombok](https://projectlombok.org/) в текущем активном проекте.
+В данной статье я рассказал о нашем опыте использования аннотации @Builder. Данная аннотация удачно дополняет конструкторы в Java и при грамотном ее использовании, надеемся, сделает ваш код читабельнее и чуточку надежнее.

@@ -1,50 +1,29 @@
 package ru.gramant.presentations.lombok;
 
-import io.thedocs.soyuz.to;
 import lombok.*;
-
-import javax.annotation.Nullable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
+@Builder(toBuilder = true)
 @NoArgsConstructor
-//@AllArgsConstructor
-@Getter
-@EqualsAndHashCode
-@ToString
+@AllArgsConstructor
 public class Employee {
     private int id;
     private String firstName;
     private String lastName;
-    private Set<String> tags;
+    private Set<String> tags = new HashSet<>();
     private Date createdAt;
 
-    @Builder(toBuilder = true)
-    public Employee(int id, String firstName, String lastName, Set<String> tags, @Nullable Date createdAt) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.tags = tags;
-        this.createdAt = (createdAt == null) ? new Date() : createdAt;
-    }
-
     public static void main(String[] args) {
-        //constructor init
-        Employee pupkin = new Employee(1, "Вася", "Пупкин", to.set("депаратамент IT", "разработчик"), new Date());
+        Employee pupkin;
 
-        //builder init
-        Employee.builder()
-                .id(1)
-                .firstName("Вася")
-                .lastName("Пупкин")
-                .tags(to.set("депаратамент IT", "разработчик"))
-                .createdAt(new Date())
-                .build();
+        pupkin = Employee.builder().id(1).firstName("Вася").lastName("Пупкин").build();
 
-        //builder change
-        pupkin = pupkin
-                .toBuilder()
-                .tags(to.set("депаратамент IT", "старший разработчик"))
-                .build();
+        //int tagsCount = pupkin.tags.size(); //java.lang.NullPointerException
+
+        pupkin = new Employee().toBuilder().id(1).firstName("Вася").lastName("Пупкин").build();
+
+        int tagsCount = pupkin.tags.size();
     }
 }

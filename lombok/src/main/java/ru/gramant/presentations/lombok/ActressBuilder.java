@@ -1,7 +1,7 @@
 
 package ru.gramant.presentations.lombok;
 
-import io.belov.soyuz.utils.to;
+import io.thedocs.soyuz.to;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
