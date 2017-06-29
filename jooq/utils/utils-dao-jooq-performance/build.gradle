@@ -1,0 +1,7 @@
+dependencies {
+    compile cl.db.jooq
+    compile cl.utils.guava
+    compile cl.utils.lombok
+    compile cl.utils.thedocs.isTo
+    compile cl.utils.thedocs.loge
+}

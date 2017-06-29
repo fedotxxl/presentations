@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-snapshot" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "info.robotbrain.gradle.lombok:lombok-gradle:1.1"
+    }
+}
+
+apply plugin: "org.springframework.boot"
+apply plugin: "info.robotbrain.lombok"
+apply plugin: "groovy"
+
+dependencies {
+    compile project(":jooq:utils:domain")
+    compile project(":jooq:utils:utils-dao-jooq")
+    compile project(":jooq:utils:utils-dao-jooq-performance")
+
+    compile cl.utils.lombok
+    compile cl.utils.soyuz.springJdbc
+    compile "org.liquibase:liquibase-core"
+
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework.boot:spring-boot-devtools")
+
+    compile "org.springframework:spring-tx:$springVersion"
+    compile "org.springframework:spring-context-support:$springVersion"
+
+    compile cl.db.connection.zaxxer
+    compile cl.db.jooq
+
+    testCompile "org.codehaus.groovy:groovy-all:2.3.6"
+    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+
+    ["spock-core", "spock-spring"].each {
+        testCompile "org.spockframework:$it:${spockVersion}"
+    }
+}

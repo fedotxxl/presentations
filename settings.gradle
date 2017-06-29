@@ -1,0 +1,1 @@
+include ":jooq:app", ":jooq:utils:domain", ":jooq:utils:utils-dao-jooq", ":jooq:utils:utils-dao-jooq-converters", ":jooq:utils:utils-dao-jooq-performance"

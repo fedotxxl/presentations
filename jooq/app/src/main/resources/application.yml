@@ -1,0 +1,15 @@
+jdbc:
+  connection:
+    driver_class: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:154392/jooq_db_presentation
+    username: jooq_db_presentation
+    password: abc
+
+jooq:
+#  performance:
+#    printDelayInSeconds: 10
+#    resetOnEachIteration: true
+  dialect: POSTGRES_9_4
+
+liquibase:
+  change-log: classpath:changelog/version-increment.xml

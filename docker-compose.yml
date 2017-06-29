@@ -1,0 +1,9 @@
+jooq-db-presentation:
+ container_name: jooq-db-presentation
+ image: sameersbn/postgresql:9.4
+ ports:
+  - "15432:5432"
+ environment:
+  - DB_USER=jooq_db_presentation:
+  - DB_PASS=abc
+  - DB_NAME=jooq_db_presentation
